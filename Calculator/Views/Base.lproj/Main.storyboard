@@ -13,7 +13,7 @@
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="CalculatorViewController" customModule="Calculator" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC" customClass="CalculatorView">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC" customClass="CalculatorView" customModule="Calculator" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -23,7 +23,7 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="bottom" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="XRe-QE-UJf">
                                         <rect key="frame" x="0.0" y="0.0" width="382" height="52"/>
                                         <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="2Pu-Ld-ZGi">
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="2Pu-Ld-ZGi" customClass="ContentStackView" customModule="Calculator" customModuleProvider="target">
                                                 <rect key="frame" x="249.5" y="0.0" width="132.5" height="24"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="-" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="c7v-6K-W40">
@@ -119,7 +119,7 @@
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="divideButton:" destination="8bC-Xf-vdC" eventType="touchUpInside" id="QvC-HX-LW5"/>
+                                                    <action selector="operatorButton:" destination="8bC-Xf-vdC" eventType="touchUpInside" id="DAo-r8-ZxB"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -135,7 +135,7 @@
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="sevenButton:" destination="8bC-Xf-vdC" eventType="touchUpInside" id="V40-iw-hXA"/>
+                                                    <action selector="numberButton:" destination="8bC-Xf-vdC" eventType="touchUpInside" id="9c6-0P-Wo9"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xgT-2D-A49">
@@ -146,7 +146,7 @@
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="eightButton:" destination="8bC-Xf-vdC" eventType="touchUpInside" id="S9a-fp-Q8u"/>
+                                                    <action selector="numberButton:" destination="8bC-Xf-vdC" eventType="touchUpInside" id="8XC-ax-HuA"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zcj-xJ-ruw">
@@ -157,7 +157,7 @@
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="nineButton:" destination="8bC-Xf-vdC" eventType="touchUpInside" id="VMb-Dx-Kzd"/>
+                                                    <action selector="numberButton:" destination="8bC-Xf-vdC" eventType="touchUpInside" id="hpd-jV-RF3"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="811-Pz-An6">
@@ -168,7 +168,7 @@
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="multiplyButton:" destination="8bC-Xf-vdC" eventType="touchUpInside" id="TG4-Kq-fVx"/>
+                                                    <action selector="operatorButton:" destination="8bC-Xf-vdC" eventType="touchUpInside" id="EkB-3Q-JdP"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -184,7 +184,7 @@
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="fourButton:" destination="8bC-Xf-vdC" eventType="touchUpInside" id="pXP-8s-Esb"/>
+                                                    <action selector="numberButton:" destination="8bC-Xf-vdC" eventType="touchUpInside" id="0J0-bc-MN3"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vpW-df-OLm">
@@ -195,7 +195,7 @@
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="fiveButton:" destination="8bC-Xf-vdC" eventType="touchUpInside" id="ubh-Pp-ixD"/>
+                                                    <action selector="numberButton:" destination="8bC-Xf-vdC" eventType="touchUpInside" id="t7J-WY-DCs"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OaY-Mw-CPv">
@@ -206,7 +206,7 @@
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="sixButton:" destination="8bC-Xf-vdC" eventType="touchUpInside" id="o8O-Us-Go7"/>
+                                                    <action selector="numberButton:" destination="8bC-Xf-vdC" eventType="touchUpInside" id="51u-v3-HHo"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nTe-Sn-Pvd">
@@ -217,7 +217,7 @@
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="minusButton:" destination="8bC-Xf-vdC" eventType="touchUpInside" id="Tit-nQ-yrM"/>
+                                                    <action selector="operatorButton:" destination="8bC-Xf-vdC" eventType="touchUpInside" id="Ywi-Jj-pc7"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -233,7 +233,7 @@
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="oneButton:" destination="8bC-Xf-vdC" eventType="touchUpInside" id="v50-AC-BrU"/>
+                                                    <action selector="numberButton:" destination="8bC-Xf-vdC" eventType="touchUpInside" id="UVK-SU-5Tv"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rif-2S-UU2">
@@ -244,7 +244,7 @@
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="twoButton:" destination="8bC-Xf-vdC" eventType="touchUpInside" id="jDK-Th-zVZ"/>
+                                                    <action selector="numberButton:" destination="8bC-Xf-vdC" eventType="touchUpInside" id="mGf-d4-4Il"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X8H-iH-tSd">
@@ -255,7 +255,7 @@
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="threeButton:" destination="8bC-Xf-vdC" eventType="touchUpInside" id="qdQ-Og-sUT"/>
+                                                    <action selector="numberButton:" destination="8bC-Xf-vdC" eventType="touchUpInside" id="MLF-pv-v61"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sbh-wC-koF">
@@ -266,7 +266,7 @@
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="plusButton:" destination="8bC-Xf-vdC" eventType="touchUpInside" id="eRb-KC-BGd"/>
+                                                    <action selector="operatorButton:" destination="8bC-Xf-vdC" eventType="touchUpInside" id="hKc-LA-hXd"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -282,7 +282,7 @@
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="zeroButton:" destination="8bC-Xf-vdC" eventType="touchUpInside" id="zRf-eh-AwG"/>
+                                                    <action selector="numberButton:" destination="8bC-Xf-vdC" eventType="touchUpInside" id="U1w-gT-Nhc"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sH6-8l-kje">
@@ -363,9 +363,10 @@
                             <constraint firstItem="DC3-Ia-6L7" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="vTI-88-p1o"/>
                         </constraints>
                         <connections>
-                            <outlet property="minusPlusLabel" destination="HPC-iy-qdm" id="kri-iR-XGA"/>
-                            <outlet property="resultLabel" destination="Lwz-OF-XHD" id="xBA-8X-W5K"/>
-                            <outlet property="scrollView" destination="BOT-7g-vxv" id="DNo-Nz-OIk"/>
+                            <outlet property="baseStackView" destination="XRe-QE-UJf" id="6ed-Ik-XBw"/>
+                            <outlet property="operandLabel" destination="Lwz-OF-XHD" id="hdR-TK-fTq"/>
+                            <outlet property="operatorLabel" destination="HPC-iy-qdm" id="Yer-mn-wrh"/>
+                            <outlet property="scrollView" destination="BOT-7g-vxv" id="hFv-5X-PeT"/>
                         </connections>
                     </view>
                 </viewController>
