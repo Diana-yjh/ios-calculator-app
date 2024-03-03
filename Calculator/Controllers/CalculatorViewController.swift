@@ -29,18 +29,35 @@ class CalculatorViewController: UIViewController, CalculatorViewDelegate {
     
     func addCalculate(string: String) {
         calculateString += string
-        print("calculateString = \(calculateString)")
     }
     
     func clearCalculatingProcess() {
         calculateString = ""
+        
         initCalculatorView(with: "0")
     }
     
     func returnResult() {
-        var formula = ExpressionParser.parse(from: calculateString)
+        let log = calculateString.split(with: ",").joined()
+        var formula = ExpressionParser.parse(from: log)
         calculateString = ""
-        print("result = \(formula.result())")
-        initCalculatorView(with: String(formula.result()))
+        
+        let result = formula.result()
+        var resultToString = String(result)
+        
+        if result.isNaN {
+            initCalculatorView(with: "NaN")
+            return
+        }
+        
+        while resultToString.contains(".") && resultToString.last == "0" {
+            resultToString.removeLast()
+        }
+        
+        if resultToString.last == "." {
+            resultToString.removeLast()
+        }
+        
+        initCalculatorView(with: resultToString.formatter() )
     }
 }
