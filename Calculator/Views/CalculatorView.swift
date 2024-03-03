@@ -22,7 +22,7 @@ class CalculatorView: UIView {
     var delegate: CalculatorViewDelegate?
     
     @IBAction func operandButton(_ sender: UIButton) {
-        guard let operand = sender.titleLabel?.text else {
+        guard var operand = sender.titleLabel?.text else {
             return
         }
         
@@ -41,9 +41,13 @@ class CalculatorView: UIView {
             operand.removeLast()
         }
         
-        addCalculation(with: sender.titleLabel?.text ?? "", and: operand)
-        updateStackView(operator: `operator`, operand: operand)
-        scrollView.scrollToBottom()
+        if operand == "0" {
+            addCalculation(with: sender.titleLabel?.text ?? "", and: operand)
+        } else {
+            addCalculation(with: sender.titleLabel?.text ?? "", and: operand)
+            updateStackView(operator: `operator`, operand: operand)
+            scrollView.scrollToBottom()
+        }
     }
     
     @IBAction func allClearButton(_ sender: UIButton) {
@@ -95,6 +99,10 @@ extension CalculatorView {
             return
         }
         
+        if operand == "0" && newOperand == "00" {
+            return
+        }
+        
         if operand == "0" && newOperand != "." {
             operandLabel.text = newOperand
             return
@@ -111,7 +119,7 @@ extension CalculatorView {
         let beforeOperator = operatorLabel.text ?? ""
     
         operatorLabel.text = `operator`
-    
+        
         delegate?.addCalculate(string: beforeOperator + operand)
         
         operandLabel.text = "0"
