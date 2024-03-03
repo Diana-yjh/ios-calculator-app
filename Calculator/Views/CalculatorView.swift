@@ -21,50 +21,33 @@ class CalculatorView: UIView {
     
     var delegate: CalculatorViewDelegate?
     
-    @IBAction func doubleZeroButton(_ sender: UIButton) {}
-    
-    @IBAction func decimalPointButton(_ sender: UIButton) {
-        guard let decimalPoint = sender.titleLabel?.text else {
+    @IBAction func operandButton(_ sender: UIButton) {
+        guard let operand = sender.titleLabel?.text else {
             return
         }
         
-        updateOperandLabel(with: decimalPoint)
-    }
-    
-    @IBAction func numberButton(_ sender: UIButton) {
-        guard let number = sender.titleLabel?.text else {
-            return
-        }
-        
-        updateOperandLabel(with: number)
-    }
-    
-    @IBAction func equalButton(_ sender: UIButton) {
-        addCalculation(with: operatorLabel.text ?? "", and: operandLabel.text ?? "")
-        
-        delegate?.returnResult()
+        updateOperandLabel(with: operand)
     }
     
     @IBAction func operatorButton(_ sender: UIButton) {
-        let operand = operandLabel.text ?? ""
+        var operand = operandLabel.text ?? ""
         let `operator` = operatorLabel.text ?? ""
+
+        while operand.contains(".") && operand.last == "0" {
+            operand.removeLast()
+        }
+        
+        if operand.last == "." {
+            operand.removeLast()
+        }
         
         addCalculation(with: sender.titleLabel?.text ?? "", and: operand)
         updateStackView(operator: `operator`, operand: operand)
-        scrollDownToEnd()
+        scrollView.scrollToBottom()
     }
     
-    @IBAction func plusMinusSignButton(_ sender: UIButton) {
-        guard let number = operandLabel.text else {
-            return
-        }
-        
-        if number.first == "-" {
-            operandLabel.text = String(number.dropFirst())
-            return
-        }
-        
-        operandLabel.text = "-" + number
+    @IBAction func allClearButton(_ sender: UIButton) {
+        delegate?.clearCalculatingProcess()
     }
     
     @IBAction func clearEntryButton(_ sender: UIButton) {
@@ -80,40 +63,55 @@ class CalculatorView: UIView {
         operandLabel.text = String(labelText)
     }
     
-    @IBAction func allClearButton(_ sender: UIButton) {
-        //1. Clear queue, 2. Update UI
-        delegate?.clearCalculatingProcess()
+    @IBAction func plusMinusSignButton(_ sender: UIButton) {
+        guard let number = operandLabel.text, number != "NaN" else {
+            return
+        }
+        
+        if number.first == "-" {
+            operandLabel.text = String(number.dropFirst())
+            return
+        }
+        
+        operandLabel.text = "-" + number
+    }
+    
+    @IBAction func equalButton(_ sender: UIButton) {
+        addCalculation(with: operatorLabel.text ?? "", and: operandLabel.text ?? "")
+        
+        delegate?.returnResult()
     }
 }
 
 extension CalculatorView {
-    func updateOperandLabel(with number: String) {
-        guard let text = operandLabel.text else {
+    func updateOperandLabel(with newOperand: String) {
+        guard var operand = operandLabel.text else {
             return
         }
         
-        if text == "0" && number != "." {
-            operandLabel.text = number
+        operand = operand.split(with: ",").joined()
+        
+        if operand.count > 20 {
             return
         }
         
-        if text.contains(".") && number == "." {
+        if operand == "0" && newOperand != "." {
+            operandLabel.text = newOperand
             return
         }
         
-        operandLabel.text = text + number
+        if operand.contains(".") && newOperand == "." {
+            return
+        }
+        
+        operandLabel.text = (operand + newOperand).formatter()
     }
     
     func addCalculation(with operator: String, and operand: String) {
-        
         let beforeOperator = operatorLabel.text ?? ""
-        
+    
         operatorLabel.text = `operator`
-        
-        if operand == "0" {
-            return
-        }
-        
+    
         delegate?.addCalculate(string: beforeOperator + operand)
         
         operandLabel.text = "0"
@@ -128,10 +126,5 @@ extension CalculatorView {
         
         baseStackView.addArrangedSubview(contentStackView)
         scrollView.layoutIfNeeded()
-    }
-    
-    func scrollDownToEnd() {
-        let bottomOffset = CGPoint(x: 0, y: scrollView.contentSize.height - scrollView.bounds.height + scrollView.contentInset.bottom)
-        scrollView.setContentOffset(bottomOffset, animated: true)
     }
 }
